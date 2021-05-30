@@ -1,11 +1,11 @@
 ---
 title: "DataViz Makeover 1"
 description: |
-  A short description of the post.
+  DataViz Makeover 1 for ISSS608: Visual Analytics.
 author:
   - name: Xu Dan
     url: https://example.com/norajones
-date: 05-25-2021
+date: 05-30-2021
 output:
   distill::distill_article:
     self_contained: false
@@ -16,86 +16,182 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# 1.0 Overview
+# 1.0 Critique of Visualization
+The original visualization can be seen below.
 
-In this article, we will show you how to plot a figure with multiple histograms by using [**ggplot2**](https://ggplot2.tidyverse.org/) and **ggpubr** packages. 
+![](img/original.jpg)
 
+## 1.1 Clarity
+**1.	Chart title is not precise**
 
-# 2.0 Installing and Launching R Packages
+The title and subtitle of the graph do not convey the intent of the graph well. In this case, the graph is demonstrating the changes in import and export volume 6 trading countries per month over two years. But the title does not mention that the graph is based on monthly data.
 
-Before you get started, you are required:
+**2.	Axis standard not consistent**
 
-* to start a new R project, and
-    * to create a new R Markdown document.
-    
-Figure below shows the quadrat plot of Tableau.
+In graph for **Hong Kong**, y-axis of the export is scaled with 'M', but the import is scaled with 'K'.
+The x-axis for **Japan** only shows time data of 2020, but the other 5 countries are over 3-year period from 2019 to 2021.
 
-![](img/image01.jpg)
+**3. Quantitative scale of y-axis**
 
-Your screen should look similar to the screenshot below.
+The measures on the y-axis of each country are not uniform. However, readers may directly compare the differences between countries based on the height of the points on the line. This can lead to inaccurate and misleading results. 
 
-![](img/image02.jpg)
+**4.	Axis title not properly labeled**
 
-Next, you will use the code chunk below to install and launch ggpubr and tidyverse in RStudio.
+‘Month of Period’ is title of the x-axis, while the x-axis is shown in year period. This will make the readers very confused about what the horizontal axis represents.
 
-# R code 
-packages = c('ggpubr', 'tidyverse')
+**5.	Confused shaded color**
 
-for(p in packages){library
-  if(!require(p, character.only = T)){
-    install.packages(p)
-  }
-  library(p, character.only = T)
-}
+Line chart with color shading is used. But in this case, the color shading for the area is unnecessary. When the areas overlap, it is difficult for readers to distinguish two legends clearly.  In addition, there will be a third color in the part where import and export overlap, which will mislead readers so that people cannot easily tell which legend each color indicates.
 
 
-# 3.0 Importing and Preparing The Data Set 
+## 1.2 Aesthetic
+**1.**	Font size of subtitle for **‘Hong Kong’**, **‘Mainland China’** … should be smaller than the that of main title of ‘Merchandise Trade of Top Six Trading Countries’. Also, the subtitles of the six countries above the six charts are not in the middle of the graphic.  
 
-In this hands-on exercise, the [Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/wine+quality) of UCI Machine Learning Repository will be used.  The data set consists of 13 variables and 6497 observations.  For the purpose of this exercise, we have combined the red wine and white wine data into one data file.  It is called wine_quality and is in csv file format.  
+**2.**	The use of color shading in the graphics is very unsuccessful. In fact, the shaded color here is not only unnecessary, but also increases the difficulty of reading for readers. The two colors also generate a third color when overlap, which makes the reading of the chart more inaccurate.
 
+**3.**	Different colors are used to demonstrate import and export respectively. However, the shade color makes it even confused for readers to observe as there appear 3 different colors. 
 
-## 3.1 Importing Data
+**4.**	Legends in the very right-hand side lonely leave room under it.
 
-First, let us import the data into R by using read_csv() of readr package.  
-
-
-# R code
-wine <- read_csv("data/wine_quality.csv")
+**5.**	Tick marks on the x-axis are inconsistent. Values on y-axis have no scale, which might confuse readers regarding that the values are absolute values.
 
 
-Notice that beside quality and type, the rest of the variables are numerical and continuous data type. 
+# 2.0 Alternative Design
+The proposed design is inspired by Tamás Varga and is shown as follows.
+
+![](img/draft.jpg){width=80%}
 
 
-# 4.0 Univariate EDA with Histogram
+## 2.1 Advantages of proposed design
+**1.** Title and subtitle explain key words that will be used in the graph. No additional transformation is done to the data, only using import, export, date, and country/region as the basis for the graph.
 
-In the figure below, multiple histograms are plottted by using ggplot() and geom_histogram() of ggplot2 package.  Then, ggarrange() of ggpubr package is used to patch these histogram into a single figure to reveal the distribution of the selected variables in the wine quality data sets.  
+**2.** The merchandise trading situation of the six countries is displayed on one graph, which makes it possible to measure their merchandise trading volume on the same scale and enables readers to read and compare import and export results across different years and different countries more easily.
 
-# Rcode
-fa <- ggplot(data=wine, aes(x= `fixed acidity`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-va <- ggplot(data=wine, aes(x= `volatile acidity`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-ca <- ggplot(data=wine, aes(x= `citric acid`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-rs <- ggplot(data=wine, aes(x= `residual sugar`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-ch <- ggplot(data=wine, aes(x= `chlorides`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-fSO2 <- ggplot(data=wine, aes(x= `free sulfur dioxide`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-tSO2 <- ggplot(data=wine, aes(x= `total sulfur dioxide`)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-density <- ggplot(data=wine, aes(x= density)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-pH <- ggplot(data=wine, aes(x= pH)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-sulphates <- ggplot(data=wine, aes(x= sulphates)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
-alcohol <- ggplot(data=wine, aes(x= alcohol)) +
-  geom_histogram(bins=20, color="black", fill="light blue")
+**3.** A Pyramid bar chart is used. On the one hand, it clearly shows the trend of changes in the import and export volume of each country over time in the vertical direction. On the other hand, it also enables readers to compare the differences in merchandise trade between different countries at the same time period horizontally.
 
-ggarrange(fa, va, ca, rs, ch, fSO2, tSO2, density, pH, sulphates, alcohol, 
-          ncol = 4, nrow = 3)
+**4.** Colors of black and red are used to differentiate export and import visually. 
+
+
+
+# 3.0 Proposed Visualization
+Please view the interactive visualization on Tableau Public [**here**](https://public.tableau.com/profile/xu.dan3204#!/).
+
+# 4.0 Step-by-step Guide
+**1.** Select used data
+
+Select only the total merchandise imports and exports of the top 6 countries and paste into a new sheet using Microsoft Excel.
+
+
+
+**2.** Reorganize the dataset
+
+Put all six countries/regions under column D. **Trade** in column B is dummy variable with import and export. At the same time, the data of the **US** is multiplied by 100 and converted into ‘Thousand Dollars’, which is consistent with the data scale of other countries.
+
+![](img/4-2.jpg){width=50%}
+
+**3.** Import the data into Tableau
+
+![](img/4-3.jpg){width=50%}
+
+**4.** Rename headers
+
+Rename ‘Thousand dollars’ to ‘Volume'.
+
+![](img/4-4.jpg){width=60%}
+
+**5.** Change Data Type
+
+Change the data type of ‘Volume’ from String to Number (whole).
+
+![](img/4-5.jpg){width=50%}
+
+**6.** Drag **Month** to Rows and sort order to Descending. Then drag **Trade** to Columns.
+
+![](img/4-6.1.jpg){width=50%}
+![](img/4-6.2.jpg){width=50%}
+
+**7.** Drag **Volume** to Columns and change its Measure to Sum. 
+
+![](img/4-7.jpg){width=50%}
+
+**8.** Add a calculated file for import and export respectively.
+
+![](img/4-8.1.jpg){width=60%}
+![](img/4-8.2.jpg){width=40%}
+
+**9.** Remove **‘Trade’** and **‘Volume’** from Columns and drag **‘Import’** and **‘Export’** to Columns instead. 
+
+![](img/4-9.jpg){width=70%}
+
+**10.** Edit Axis of **‘Export’** by Reversed.
+
+![](img/4-10.jpg){width=50%}
+
+The chart then looks like below.
+
+![](img/4-10.2.jpg){width=60%}
+
+**11.** Change the **‘Export’** and **‘Import’** bars to black and red respectively to differentiate the trade type.
+
+![](img/4-11.jpg){width=80%}
+
+**12.** Add filter 
+
+So far, the chart displays the total export and import of six countries monthly. We should add a filter for **‘Country/Region’** to observe the merchandise trade situation of each country. Select the desired Country/Region for observation. In this case, **Hong Kong** is chosen. Show the **‘Country/Region’** filter on the sidebar.
+
+![](img/4-12.jpg){width=50%}
+
+**13.** The graph should now look like this.
+
+![](img/4-13.jpg){width=80%}
+
+**14.** Select Single Value (list) under **‘Country/Region’** filter allows the chart to be displayed individually according to the country/region.
+
+![](img/4-14.jpg){width=50%}
+
+**15.** Edit Title
+
+Double click the title pane and select **Country/Region** under Insert tab. This allows the chart name to be automatically displayed based on the **Country/Region**.
+
+![](img/4-15.jpg){width=50%}
+
+**16.** Right click on **(All)** and uncheck **Show “All” Value** under Customize. 
+
+![](img/4-16.jpg){width=50%}
+
+**17.** Drag **Import** and **Export** to **Tooltip** and then edit Tooltip to change **Import** to red and **Export** to dark. Also add $ and K symbols before and after <SUM(Import)> respectively.
+
+![](img/17.1.jpg){width=50%}
+
+**18.** The base graph should look like this.
+
+![](img/18.1.jpg){width=70%}
+
+**19.** Remove **‘Country/Region’** from ‘Filters’ pane and drag it to Columns to display all six charts simultaneously. Also edit the main title for the visualization.
+
+![](img/19.1.jpg){width=80%}
+
+# 5.0 Derived insights
+
+![](img/final.jpg){width=80%}
+
+**1.** Overall, from January 2019 to April 2021, merchandise trade in the top 6 countries has shown an upward trend. From an individual point of view, the United States is the only one of the six countries where merchandise trade has a decreasing trend.
+
+**2.** From the perspective of merchandise trade volume, Mainland China and the US are the two countries with the largest total transaction volume among the six countries, while Hong Kong and Japan are the two with the smallest total transaction volume. Roughly based on the area of the pyramid bar, the merchandise volume between China and the United States is more than twice that of Japan and Hong Kong.
+
+**3.** From the comparison of imports and exports, we can intuitively find that Hong Kong is an obvious export-oriented region. Correspondingly, Taiwan is a relatively typical import-oriented country. Japan and the United States have relatively balanced imports and exports. The import trade between Malaysia and China is slightly larger than the export trade. This is because the two countries have sufficient product resources and labor, so there is more surplus for export.
+
+**4.** From February to June 2020, these countries and regions have suddenly shortened bars, that is, merchandise trade has dropped significantly, which coincides with the time when COVID-19 broke out in these countries.
+
+
+
+
+
+
+
+
+
+
 
 
 
