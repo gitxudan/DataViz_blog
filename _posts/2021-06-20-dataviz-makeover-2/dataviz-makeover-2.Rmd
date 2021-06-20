@@ -16,9 +16,6 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
-
-Learn more about using Distill at <https://rstudio.github.io/distill>.
 
 
 # 1.0 Critique of Visualization
@@ -50,6 +47,9 @@ The original visualization can be seen below.
 # 2.0  Proposed Design
 The initial sketch of proposed design is as following:
 
+
+![](img/pp.jpg){width=80%}
+
 ## 2.1 Clarity
 
 1. X-axis and y-axis: chart 1 keep to the primary axis just change to percentile. So, there is no need to care about the units.
@@ -75,7 +75,7 @@ The initial sketch of proposed design is as following:
 
 
 # 3.0 Proposed Visualization
-Please view the interactive visualization on Tableau Public [**here**]/).
+Please view the interactive visualization on Tableau Public [**here**](https://public.tableau.com/app/profile/xu.dan3204/viz/MonthlySingaporeMerchandiseTrade/Dashboard1).
 
 
 # 4.0 Step-by-step Guide
@@ -203,14 +203,14 @@ Please view the interactive visualization on Tableau Public [**here**]/).
 ![](img/24.jpg){width=80%}
 
 
-25	Create a ‘Dashboard’. Drag sheets ‘Top 10 Trade partners’, ‘Trading distribution’, and ‘Balance change’ to the right-hand dashboard. Add a dashboard title. 
+25	Create a ‘Dashboard’. Drag sheets ‘Top n partners’, ‘Trade with Singapore over 2011-2020’, and ‘Top 10 partners’ to the right-hand dashboard. Add a dashboard title as 'Singapore Merchandise Trade Partners'. 
 
 
 ![](img/25.jpg){width=80%}
 
 26	Finally, hide the worksheets and publish the dashboard to Tableau Public.
 
-
+![](img/100.jpg){width=80%}
 
 # 5. Major observations
 
