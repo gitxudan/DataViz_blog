@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["dataviz-makeover-2_files/anchor-4.2.2/anchor.min.js","dataviz-makeover-2_files/bowser-1.9.3/bowser.min.js","dataviz-makeover-2_files/distill-2.2.21/template.v2.js","dataviz-makeover-2_files/jquery-1.11.3/jquery.min.js","dataviz-makeover-2_files/popper-2.6.0/popper.min.js","dataviz-makeover-2_files/tippy-6.2.7/tippy-bundle.umd.min.js","dataviz-makeover-2_files/tippy-6.2.7/tippy-light-border.css","dataviz-makeover-2_files/tippy-6.2.7/tippy.css","dataviz-makeover-2_files/tippy-6.2.7/tippy.umd.min.js","dataviz-makeover-2_files/webcomponents-2.0.0/webcomponents.js","img/0.jpg","img/1.jpg","img/10.jpg","img/100.jpg","img/11.jpg","img/12.jpg","img/13.jpg","img/14.jpg","img/15.jpg","img/16.jpg","img/17.jpg","img/18.jpg","img/19.jpg","img/2.jpg","img/20.jpg","img/21.jpg","img/22.jpg","img/23.jpg","img/24.jpg","img/25.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg","img/7.jpg","img/8.jpg","img/9.jpg","img/pp.jpg"]}
+  {"type":"character","attributes":{},"value":["dataviz-makeover-2_files/anchor-4.2.2/anchor.min.js","dataviz-makeover-2_files/bowser-1.9.3/bowser.min.js","dataviz-makeover-2_files/distill-2.2.21/template.v2.js","dataviz-makeover-2_files/jquery-1.11.3/jquery.min.js","dataviz-makeover-2_files/popper-2.6.0/popper.min.js","dataviz-makeover-2_files/tippy-6.2.7/tippy-bundle.umd.min.js","dataviz-makeover-2_files/tippy-6.2.7/tippy-light-border.css","dataviz-makeover-2_files/tippy-6.2.7/tippy.css","dataviz-makeover-2_files/tippy-6.2.7/tippy.umd.min.js","dataviz-makeover-2_files/webcomponents-2.0.0/webcomponents.js","img/0.jpg","img/1.jpg","img/10.jpg","img/100.jpg","img/11.jpg","img/12.jpg","img/13.jpg","img/14.jpg","img/15.jpg","img/16.jpg","img/17.jpg","img/18.jpg","img/19.jpg","img/2.jpg","img/20.jpg","img/21.jpg","img/22.jpg","img/23-1.jpg","img/23.jpg","img/24-1.jpg","img/24.jpg","img/25-1.jpg","img/25.jpg","img/26-1.jpg","img/27.jpg","img/3.jpg","img/4.jpg","img/5.jpg","img/6.jpg","img/7.jpg","img/8.jpg","img/9.jpg","img/dashboard.jpg","img/pp.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2201,15 +2201,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <p><img src="img/21.jpg" style="width:80.0%" /></p>
 <p>22 Edit colors stepped 2 steps.</p>
 <p><img src="img/22.jpg" style="width:80.0%" /></p>
-<p>23 For Chart 3, create calculated fields of ‘Dif value’, ‘Net Import’ and ‘Net Export’.</p>
-<p><img src="img/23.jpg" style="width:80.0%" /></p>
-<p>24 Drag ‘Net Import’ and ‘Net Export’ to Rows and drag ‘Month’ to Columns. Repeat previous steps for filtering year range. And then edit title.</p>
-<p><img src="img/24.jpg" style="width:80.0%" /></p>
-<p>25 Create a ‘Dashboard’. Drag sheets ‘Top n partners’, ‘Trade with Singapore over 2011-2020’, and ‘Top 10 partners’ to the right-hand dashboard. Add a dashboard title as ‘Singapore Merchandise Trade Partners’.</p>
-<p><img src="img/25.jpg" style="width:80.0%" /></p>
-<p>26 Finally, hide the worksheets and publish the dashboard to Tableau Public.</p>
+<p>23 For Chart 3,drag ‘Export Value’ and ‘Import Value’ to Rows. Drag ‘Month’ to both ‘Columns’ and ‘Filters’ and select date range of year from 2011 to 2020.</p>
+<p><img src="img/23-1.jpg" style="width:80.0%" /></p>
+<p>24 Drag ‘Country/Region’ to ‘Filters’. Under ‘Import Value’ axis, choose ‘Dual Axis’ to combine these two line charts.</p>
+<p><img src="img/24-1.jpg" style="width:80.0%" /></p>
+<p>25 Edit ‘Format Filter and Set Controls’ to format the ‘Title’ and ‘Body’. Then edit the filter to ‘Single Value (dropdown)’.</p>
+<p><img src="img/25-1.jpg" style="width:80.0%" /></p>
+<p>26 Edit Axis of both y-axis and remove the Titles. Drag ‘Measure Names’ to ‘Color’ and ‘Label’ under Marks. Also edit the title.</p>
+<p><img src="img/26-1.jpg" style="width:80.0%" /></p>
+<p>27 Create a ‘Dashboard’. Drag sheets ‘Top 10 trade partners’, ‘Balance change’, and ‘Top n partners’ to the right-hand dashboard. Add a dashboard title. Set action to these three charts.</p>
+<p><img src="img/27.jpg" style="width:80.0%" /></p>
+<p>28 Finally, hide the worksheets and publish the dashboard to Tableau Public.</p>
 <p><img src="img/100.jpg" style="width:80.0%" /></p>
-<h1 id="major-observations">5. Major observations</h1>
+<h1 id="major-observations">5. Major Observations</h1>
 <ol type="1">
 <li><p>Top n partners: By observing the merchandise transactions of Singapore’s top 10 to top 30 trading partners, we can see that Singapore is a country with a trade deficit, because Singapore has more countries that import goods than countries that export goods.</p></li>
 <li><p>Top 10 trade partners: over the 10-year period, Malaysia was the most important merchandise trade partner for Singapore in 2011 and 2012 based on its number 1 position of total trade volume. Since 2013, Mainland China began to surpass Malaysia and became the largest partner for Singapore. In year 2020, in terms of total import and export volume, Mainland China is Singapore’s largest trading partner of 136.2 billion dollars. Following by Malaysia of about 100 billion dollars. It is worth noted that Japan and Republic of Korea are on the reference line, their imports and exports with Singapore basically maintained a balance.</p></li>
